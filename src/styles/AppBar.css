@@ -1,0 +1,26 @@
+.appBar__root {
+  flex-grow: 1 !important;
+  width: 100%;
+  background-color: var(--theme-color) !important;
+}
+
+/* .menuButton {
+} */
+
+.appBar__appBar {
+  background-color: var(--theme-color) !important;
+ 
+}
+
+.appBar__button {
+  background-color: var(--theme-background) !important;
+  color: var(--theme-color) !important;
+  border: none !important;
+  color: black;
+  font-weight: 900 !important;
+  float: right !important;
+  /* text-transform: inherit !important; */
+  border-radius: 30px !important;
+  width: 80px;
+  
+}

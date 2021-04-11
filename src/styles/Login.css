@@ -1,0 +1,37 @@
+.login__form {
+  display: flex; 
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff9966 impor !important; 
+}
+
+.login__submitButton {
+  background-color: var(--theme-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  /* text-transform: inherit !important; */
+  border-radius: 30px !important;
+  width: 80px;
+  /*
+    height: 40px !important;
+    margin-top: 20px !important;
+    margin-left: auto !important; */
+}
+
+.login__card {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border-width: 10px;
+  background-color: #ff9966 impor !important;
+  margin-top: 40%;
+  margin-bottom: 50%;
+  height: 300px;
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(243, 11, 11, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.3s;
+  border-radius: 5px 5px 0 0;
+}

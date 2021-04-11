@@ -1,0 +1,27 @@
+body {
+  /* --theme-color: #50b7f5; */
+  --theme-color: #262247;
+  --theme-background: #e6ecf0;
+  
+}
+
+/* .App {
+  background-color: rgb(238, 238, 245);
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+} */
+
+.App {
+  display: flex;
+  /* margin-left: 10%;
+  margin-right: 10%; */
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  
+  /* background-color: #ff9966 !important; */
+}
