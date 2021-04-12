@@ -175,6 +175,7 @@ function TweetBox() {
         >
           Search
         </Button>
+        {error}
       </form>
       {typeof(result.title) != "undefined" && (
           <Card className="login__card" variant="outlined" style={{height: "700px"}} onClick={viewResult}>

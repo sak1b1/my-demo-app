@@ -22,6 +22,7 @@ function App() {
     error,
     setError,
   };
+  localStorage.setItem("user", "sakib");
 
   return (
     <>

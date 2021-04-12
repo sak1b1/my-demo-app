@@ -20,35 +20,29 @@ function Feed() {
     setError,
   } = useContext(AppContext);
 
-  
-
   useEffect(() => {
-
-
-  //   const token = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
+    //   const token = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
     const headers = {
       "Content-Type": "text/plain",
       // "Authorization": "" +token
     };
 
-  //   // authAxios
-  //   //   .get("/product")
-  //   //   .then((response) => {
-  //   //     // console.log("Success ========>", response);
-  //   //     const arr = MainHelper(response);
-  //   //     setPostList(arr);
-  //   //   })
-  //   //   .catch((error) => {
-  //   //     console.log("Error ========>", error);
-  //   //   });
+    //   // authAxios
+    //   //   .get("/product")
+    //   //   .then((response) => {
+    //   //     // console.log("Success ========>", response);
+    //   //     const arr = MainHelper(response);
+    //   //     setPostList(arr);
+    //   //   })
+    //   //   .catch((error) => {
+    //   //     console.log("Error ========>", error);
+    //   //   });
 
     axios
-      .get("http://localhost:5000/product",
-      {headers}
-      )
+      .get("http://localhost:5000/product", { headers })
       .then((response) => {
         console.log("Success ========>", response);
-       const arr = MainHelper(response);
+        const arr = MainHelper(response);
         setPostList(arr);
         console.log(arr);
       })
@@ -75,21 +69,10 @@ function Feed() {
           return (
             <Post
               key={post.id}
-              // id={post.id}
-              // displayName={post.name}
-              // username={post.id}
-              // verified={post.name}
-              // text={post.description}
-              // avatar={post.name}
-              // image={post.name}
-              // comments={post.comments}
-              // like={post.like}
-
               id={post.id}
               title={post.title}
               year={post.year}
               writer={post.writer}
-
               director={post.director}
               poster={post.poster}
               ratings={post.ratings}
@@ -97,7 +80,6 @@ function Feed() {
               imdb_id={post.imdb_id}
               comments={post.comments}
             />
-           
           );
         })}
       </FlipMove>

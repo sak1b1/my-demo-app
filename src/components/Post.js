@@ -18,16 +18,6 @@ import FlipMove from "react-flip-move";
 const Post = forwardRef(
   (
     {
-      // displayName,
-      // username,
-      // verified,
-      // text,
-      // image,
-      // avatar,
-      // comments,
-      // id,
-      // like,
-      //===============================
       id,
       title,
       year,
@@ -54,6 +44,11 @@ const Post = forwardRef(
 
     const addComment = (e) => {
       e.preventDefault();
+      
+      const user = localStorage.getItem("user")
+        ? localStorage.getItem("user")
+        : "";
+
       const token = localStorage.getItem("accessToken")
         ? localStorage.getItem("accessToken")
         : "";
@@ -68,7 +63,7 @@ const Post = forwardRef(
           {
             content: String(commentBox),
             product_id: id,
-            posted_by: "1",
+            posted_by: user,
           },
           { headers }
         )
@@ -189,7 +184,7 @@ const Post = forwardRef(
           <input
             onChange={(e) => setCommentBox(e.target.value)}
             value={commentBox}
-            placeholder="Add a comment.."
+            placeholder="Add a review.."
             type="text"
             className="post__commentBox"
             onKeyPress={(ev) => {
@@ -207,41 +202,7 @@ const Post = forwardRef(
           </Button>
 
           <div className="post__footer">
-            {/* <ChatBubbleOutlineIcon fontSize="small" />
-            <RepeatIcon fontSize="small" /> */}
-
-            {/* {like > 0 ? (
-              <span className="post__headerSpecial">
-                <div className="post__likesWithCount">
-                  <FavoriteIcon
-                    onClick={addLike}
-                    className="post__redFavoriteIcon"
-                    fontSize="small"
-                  />
-                  <span>{like}</span>
-                </div>
-              </span>
-            ) : (
-              <span className="post__headerSpecial">
-                <FavoriteBorderIcon onClick={addLike} fontSize="small" />
-              </span>
-            )} */}
-
-            <DeleteIcon
-              fontSize="small"
-              onClick={deleteTweet}
-              className="post__deleteButton"
-            />
-
-            {/* <PublishIcon fontSize="small" /> */}
-            {/* <Button
-              onClick={deleteTweet}
-              type="submit"
-              className="tweetBox__deleteButton"
-              startIcon={<DeleteIcon />}
-              fontSize="small"
-            >
-            </Button> */}
+            
           </div>
         </div>
       </div>
