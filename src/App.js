@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./styles/App.css";
-import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
-import TweetBox from "./components/TweetBox";
-import Widget from "./components/Widget";
-import Login from "./components/Login";
+import SearchBox from "./components/SearchBox";
 import Details from "./components/Details";
-// import AppBar from "./components/AppBar";
 import AppBar from "@material-ui/core/AppBar";
 import AppContext from "./AppContext";
-import Demo from "./components/Demo";
-import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import "./styles/AppBar.css";
 
 function App() {
@@ -78,7 +69,7 @@ function DetailsPage() {
 function HomePage() {
   return (
     <div>
-      <TweetBox />
+      <SearchBox />
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import React, { useState, useContext } from "react";
-import "../styles/TweetBox.css";
+import "../styles/SearchBox.css";
 import { Avatar, Button, Card, CardContent } from "@material-ui/core";
 import Post from "./Post";
 import axios from "axios";
 import AppContext from "../AppContext";
 import MainHelper from "../helper/MainHelper";
-import {Router, Route, Link, RouteHandler} from 'react-router';
 
-function TweetBox() {
+function SearchBox() {
   const [tweetMessage, setTweetMessage] = useState("");
   const [description, setDescription] = useState("");
   const [result, setResult] = useState({});
@@ -153,4 +152,4 @@ function TweetBox() {
   );
 }
 
-export default TweetBox;
+export default SearchBox;
