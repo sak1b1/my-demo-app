@@ -9,12 +9,10 @@
 8. python3 app.py
 This should get the backend db+server ready
 
-For the front end
+# For the front end
 1. npm install 
 2. npm start
-=========================
-
-1. search feature works
-2. clicking on serached content adds it to the database
-3. clicking on the recently viewed item shows a list of all the serached contents
-4. clicking on the content gives the options to add comments(comments are saved in the databse correctly 
+3. search feature works
+4. clicking on serached content adds it to the database
+5. clicking on the recently viewed item shows a list of all the serached contents
+6. clicking on the content gives the options to add comments(comments are saved in the databse correctly 
