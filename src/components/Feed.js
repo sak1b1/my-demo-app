@@ -56,14 +56,10 @@ function Feed() {
   return (
     <div className="feed">
       <div className="feed__header">
-        <h2>Home</h2>
-        {/* <h4>{accessToken}</h4> */}
+        <h1>Recently Viewed</h1>
         <h4>{error}</h4>
       </div>
-      {/* {postList.length!=} */}
-      {/* <TweetBox /> */}
-      {/* <listItems /> */}
-      <h1>Recently Viewed</h1>
+
       <FlipMove>
         {postList.map(function (post, idx) {
           return (
@@ -79,6 +75,8 @@ function Feed() {
               type_of={post.type_of}
               imdb_id={post.imdb_id}
               comments={post.comments}
+              // showComments = {false}
+              showComments = {false}
             />
           );
         })}

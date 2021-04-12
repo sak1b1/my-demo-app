@@ -1,6 +1,12 @@
 import React, { forwardRef, useContext, useState } from "react";
 import "../styles/Post.css";
 import { Avatar, Button, Card, CardContent } from "@material-ui/core";
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
+import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
+import RepeatIcon from "@material-ui/icons/Repeat";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import PublishIcon from "@material-ui/icons/Publish";
 import axios from "axios";
 import Icon from "@material-ui/core/Icon";
 import DeleteIcon from "@material-ui/icons/DeleteOutline";
@@ -9,7 +15,7 @@ import Comment from "./Comment";
 import MainHelper from "../helper/MainHelper";
 import FlipMove from "react-flip-move";
 
-const Post = forwardRef(
+const Details = forwardRef(
   (
     {
       id,
@@ -35,7 +41,6 @@ const Post = forwardRef(
       setError,
     } = useContext(AppContext);
     const [commentBox, setCommentBox] = useState("");
-    const [commentsVisible, SetCommentsVisible] = useState(showComments);
     // console.log(postList);
 
     const addComment = (e) => {
@@ -64,7 +69,7 @@ const Post = forwardRef(
           { headers }
         )
         .then((response) => {
-          //console.log("Success ========>", response);
+          console.log("Success ========>", response);
 
           axios
             .get("http://localhost:5000/product", { headers })
@@ -72,12 +77,6 @@ const Post = forwardRef(
               // console.log("Success ========>", response);
               const arr = MainHelper(response);
               setPostList(arr);
-              for (let i = 0; i < postList.length; i++) {
-                if (postList[i].id == id) {
-                  const singlePost = postList[i];
-                  setPostList([singlePost]);
-                }
-              }
               console.log(accessToken);
             });
         })
@@ -92,34 +91,23 @@ const Post = forwardRef(
       setCommentBox("");
     };
 
-    const viewResult = (e) => {
-      e.preventDefault();
-
-      SetCommentsVisible(true);
-      for (let i = 0; i < postList.length; i++) {
-        if (postList[i].id == id) {
-          const singlePost = postList[i];
-          setPostList([singlePost]);
-        }
-      }
-    };
-
     return (
       <div className="post" ref={ref}>
         <div className="post__body">
-          <Card className="" variant="outlined" style={{}} onClick={viewResult}>
+          <Card className="" variant="outlined" style={{}}>
             <CardContent>
               <h3>{title}</h3>
               <p>Year: {year}</p>
               <p>Writer: {writer}</p>
               <p>Director: {director}</p>
-
+              {/* <p>{result.ratings}</p> */}
               <p>Type: {type_of}</p>
-
+              {/* <p>{result.imdbID}</p> */}
               <img src={poster} />
+              {/* <p>{comments.length}</p> */}
             </CardContent>
           </Card>
-          {commentsVisible == true && (
+          {showComments == true && (
             <div>
               <FlipMove>
                 {comments.map(function (comment, idx) {
@@ -156,4 +144,4 @@ const Post = forwardRef(
   }
 );
 
-export default Post;
+export default Details;
