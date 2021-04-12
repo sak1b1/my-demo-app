@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
+import TweetBox from "./components/TweetBox";
 import Widget from "./components/Widget";
 import Login from "./components/Login";
 import AppBar from "./components/AppBar";
@@ -27,7 +28,8 @@ function App() {
       <AppContext.Provider value={AppContextValue}>
         <div className="App">
           <AppBar />
-          <Login />
+          {/* <Login /> */}
+          <TweetBox />
           <Feed />
         </div>
       </AppContext.Provider>

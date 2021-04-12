@@ -1,6 +1,6 @@
 import React, { forwardRef, useContext, useState } from "react";
 import "../styles/Post.css";
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar, Button, Card, CardContent } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
@@ -18,28 +18,48 @@ import FlipMove from "react-flip-move";
 const Post = forwardRef(
   (
     {
-      displayName,
-      username,
-      verified,
-      text,
-      image,
-      avatar,
-      comments,
+      // displayName,
+      // username,
+      // verified,
+      // text,
+      // image,
+      // avatar,
+      // comments,
+      // id,
+      // like,
+      //===============================
       id,
-      like,
+      title,
+      year,
+      writer,
+      director,
+      poster,
+      ratings,
+      type_of,
+      imdb_id,
+      comments,
     },
     ref
   ) => {
-    const { postList, setPostList, accessToken, setAccessToken, error, setError } = useContext(AppContext);
+    const {
+      postList,
+      setPostList,
+      accessToken,
+      setAccessToken,
+      error,
+      setError,
+    } = useContext(AppContext);
     const [commentBox, setCommentBox] = useState("");
     // console.log(postList);
 
     const addComment = (e) => {
       e.preventDefault();
-      const token = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
+      const token = localStorage.getItem("accessToken")
+        ? localStorage.getItem("accessToken")
+        : "";
       const headers = {
         "Content-Type": "application/json",
-        "Authorization": "" +token
+        Authorization: "" + token,
       };
 
       axios
@@ -48,6 +68,7 @@ const Post = forwardRef(
           {
             content: String(commentBox),
             product_id: id,
+            posted_by: "1",
           },
           { headers }
         )
@@ -66,8 +87,8 @@ const Post = forwardRef(
         })
         .catch((error) => {
           console.log("Error ========>", error);
-        setError("Failed to add comment.");
-        const timer = setTimeout(() => {
+          setError("Failed to add comment.");
+          const timer = setTimeout(() => {
             setError("");
           }, 5000);
         });
@@ -77,10 +98,12 @@ const Post = forwardRef(
 
     const addLike = (e) => {
       e.preventDefault();
-      const token = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
+      const token = localStorage.getItem("accessToken")
+        ? localStorage.getItem("accessToken")
+        : "";
       const headers = {
         "Content-Type": "application/json",
-        "Authorization": "" +token
+        Authorization: "" + token,
       };
 
       axios
@@ -110,17 +133,17 @@ const Post = forwardRef(
 
     const deleteTweet = (e) => {
       e.preventDefault();
-      console.log("delete korlam! " + username);
+      // console.log("delete korlam! " + username);
 
       // setPostList([...postList, {"name":String(Math.random())}]);
 
       let arr1 = [];
 
-      for (let i = 0; i < postList.length; i++) {
-        if (String(postList[i].id) !== String(username)) {
-          arr1.push(postList[i]);
-        }
-      }
+      // for (let i = 0; i < postList.length; i++) {
+      //   if (String(postList[i].id) !== String(username)) {
+      //     arr1.push(postList[i]);
+      //   }
+      // }
 
       setPostList(arr1);
 
@@ -144,31 +167,25 @@ const Post = forwardRef(
 
     return (
       <div className="post" ref={ref}>
-        <div className="post__avatar">
-          <Avatar src={avatar} />
-        </div>
         <div className="post__body">
-          <div className="post__header">
-            <div className="post__headerText">
-              <h3>
-                {displayName}{" "}
-                <span className="post__headerSpecial">
-                  {verified && <VerifiedUserIcon className="post__badge" />} @
-                  {username}
-                </span>
-              </h3>
-            </div>
-            <div className="post__headerDescription">
-              <p>{text}</p>
-            </div>
-          </div>
-          <img src={image} alt="" />
-          <FlipMove>
-            {comments.map(function (comment, idx) {
-              return <Comment content={comment.content} />;
-            })}
-          </FlipMove>
-
+          <Card className="" variant="outlined" style={{ }}>
+            <CardContent>
+              <h3>{title}</h3>
+              <p>Year: {year}</p>
+              <p>Writer: {writer}</p>
+              <p>Director: {director}</p>
+              {/* <p>{result.ratings}</p> */}
+              <p>Type: {type_of}</p>
+              {/* <p>{result.imdbID}</p> */}
+              <img src={poster} />
+              <p>{comments.length}</p>
+              <FlipMove>
+                {comments.map(function (comment, idx) {
+                  return <Comment content={comment.content} posted_by={comment.posted_by} />;
+                })}
+              </FlipMove>
+            </CardContent>
+          </Card>
           <input
             onChange={(e) => setCommentBox(e.target.value)}
             value={commentBox}
@@ -176,9 +193,8 @@ const Post = forwardRef(
             type="text"
             className="post__commentBox"
             onKeyPress={(ev) => {
-              if (ev.ctrlKey && ev.key === 'Enter') {
-               return this.setCommentBox(ev.target.value); // here was the mistake
-                
+              if (ev.ctrlKey && ev.key === "Enter") {
+                return this.setCommentBox(ev.target.value); // here was the mistake
               }
             }}
           />
@@ -194,7 +210,7 @@ const Post = forwardRef(
             {/* <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" /> */}
 
-            {like > 0 ? (
+            {/* {like > 0 ? (
               <span className="post__headerSpecial">
                 <div className="post__likesWithCount">
                   <FavoriteIcon
@@ -209,7 +225,7 @@ const Post = forwardRef(
               <span className="post__headerSpecial">
                 <FavoriteBorderIcon onClick={addLike} fontSize="small" />
               </span>
-            )}
+            )} */}
 
             <DeleteIcon
               fontSize="small"

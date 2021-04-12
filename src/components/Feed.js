@@ -25,36 +25,37 @@ function Feed() {
   useEffect(() => {
 
 
-    const token = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
+  //   const token = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
     const headers = {
-      // "Content-Type": "text/plain",
-      "Authorization": "" +token
+      "Content-Type": "text/plain",
+      // "Authorization": "" +token
     };
 
-    // authAxios
-    //   .get("/product")
-    //   .then((response) => {
-    //     // console.log("Success ========>", response);
-    //     const arr = MainHelper(response);
-    //     setPostList(arr);
-    //   })
-    //   .catch((error) => {
-    //     console.log("Error ========>", error);
-    //   });
+  //   // authAxios
+  //   //   .get("/product")
+  //   //   .then((response) => {
+  //   //     // console.log("Success ========>", response);
+  //   //     const arr = MainHelper(response);
+  //   //     setPostList(arr);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log("Error ========>", error);
+  //   //   });
 
     axios
       .get("http://localhost:5000/product",
       {headers}
       )
       .then((response) => {
-        // console.log("Success ========>", response);
-        const arr = MainHelper(response);
+        console.log("Success ========>", response);
+       const arr = MainHelper(response);
         setPostList(arr);
+        console.log(arr);
       })
       .catch((error) => {
         // console.log("Error ========>", error);
         // console.log(error.response.data);
-        setError("couldn't fetch " + error.response.data.message);
+        setError("couldn't fetch ");
       });
   }, []);
 
@@ -66,22 +67,35 @@ function Feed() {
         <h4>{error}</h4>
       </div>
       {/* {postList.length!=} */}
-      <TweetBox />
+      {/* <TweetBox /> */}
       {/* <listItems /> */}
+      <h1>Recently Viewed</h1>
       <FlipMove>
         {postList.map(function (post, idx) {
           return (
             <Post
               key={post.id}
+              // id={post.id}
+              // displayName={post.name}
+              // username={post.id}
+              // verified={post.name}
+              // text={post.description}
+              // avatar={post.name}
+              // image={post.name}
+              // comments={post.comments}
+              // like={post.like}
+
               id={post.id}
-              displayName={post.name}
-              username={post.id}
-              verified={post.name}
-              text={post.description}
-              avatar={post.name}
-              image={post.name}
+              title={post.title}
+              year={post.year}
+              writer={post.writer}
+
+              director={post.director}
+              poster={post.poster}
+              ratings={post.ratings}
+              type_of={post.type_of}
+              imdb_id={post.imdb_id}
               comments={post.comments}
-              like={post.like}
             />
            
           );
