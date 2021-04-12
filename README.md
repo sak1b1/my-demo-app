@@ -1,5 +1,5 @@
 # my-twitter-app
-1. The flask API is in root/flask_api
+1. The flask API is in root/flask_api so kindly cd to that directory 
 2. create a virtual environment for python
 3. RUN>pip3 install -r requirements.txt
 4. RUN>python3
